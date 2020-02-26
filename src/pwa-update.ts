@@ -7,17 +7,61 @@ export class pwaupdate extends LitElement {
 
   @property({ type: String }) swpath: string;
   @property({ type: String }) updateevent: string = 'forceUpdate';
+  @property({ type: String }) updateMessage = "An update for this app is available";
+
+  @property({ type: Boolean }) readyToAsk: boolean = false;
+
+  swreg: ServiceWorkerRegistration;
 
   static get styles() {
     return css`
+      :host {
+        font-family: sans-serif;
+      }
 
+      #updateToast {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        background: #3c3c3c;
+        color: white;
+        padding: 1em;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 22em;
+        font-weight: 600;
 
+        animation-name: fadein;
+        animation-duration: 300ms;
+      }
+
+      #updateToast button {
+        color: white;
+        border: none;
+        background: #0b0b0b;
+        padding: 8px;
+        border-radius: 24px;
+        text-transform: lowercase;
+        padding-left: 14px;
+        padding-right: 14px;
+        font-weight: bold;
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
     `;
   }
 
-  constructor() {
-    super();
-
+  firstUpdated() {
     if (this.swpath) {
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
@@ -41,19 +85,33 @@ export class pwaupdate extends LitElement {
 
   setupEvents() {
     this.addEventListener('pwaUpdate', async () => {
-      const reg = await navigator.serviceWorker.getRegistration();
+      if (navigator.serviceWorker) {
+        this.swreg = await navigator.serviceWorker.getRegistration();
 
-      if (reg) {
-        reg.waiting.postMessage(this.updateevent);
-        window.location.reload();
+        if (this.swreg && this.swreg.waiting) {
+          this.readyToAsk = true;
+        }
       }
     })
+  }
+
+  doUpdate() {
+    this.swreg.waiting.postMessage(this.updateevent);
+    window.location.reload();
   }
 
   render() {
     return html`
       <div>
-       <h1>Hello world</h1>
+       ${
+      this.readyToAsk ? html`
+           <div id="updateToast">
+             <span>${this.updateMessage}</span>
+
+             <button @click="${() => this.doUpdate()}">Update</button>
+           </div>
+         ` : null
+      }
       </div>
     `
   }
