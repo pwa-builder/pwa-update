@@ -38,7 +38,7 @@ Then you can use the element `<pwa-update></pwa-update>` anywhere in your templa
 
 | Property             | Attribute            | Description                                                                     | Type      | Default                                             |
 | -------------------- | -------------------- | ------------------------------------------------------------------------------- | --------- | --------------------------------------------------- |
-| `updatemessage`           | `updatemessage`       | Message that will be show to the user when their is an update                                  | `string` | `An update for this app is available`                                             |
+| `updatemessage`           | `updatemessage`       | Message that will be show to the user when there is an update                                  | `string` | `An update for this app is available`                                             |
 | `updateevent`          | `updateevent`          | name of event sent to service worker to start udpate                        | `string` | `false`                                             |
  `string`  | `forceUpdate`                                     |
 | `swpath`          | `swpath`          | The path to the service worker to be registered | `string`  | `service-worker.js`                      |
