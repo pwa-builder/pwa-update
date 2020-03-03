@@ -61,22 +61,20 @@ export class pwaupdate extends LitElement {
     `;
   }
 
-  firstUpdated() {
+  async firstUpdated() {
     if (this.swpath) {
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', async () => {
-          const reg = await navigator.serviceWorker.register(this.swpath);
+        const reg = await navigator.serviceWorker.register(this.swpath);
 
-          reg.onupdatefound = () => {
-            let newWorker = reg.installing;
+        reg.onupdatefound = () => {
+          let newWorker = reg.installing;
 
-            newWorker.onstatechange = () => {
-              if (newWorker.state === 'installed') {
-                this.dispatchEvent(new Event('pwaUpdate'));
-              }
+          newWorker.onstatechange = () => {
+            if (newWorker.state === 'installed') {
+              this.dispatchEvent(new Event('pwaUpdate'));
             }
           }
-        });
+        }
       }
     }
 
