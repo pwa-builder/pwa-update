@@ -16,13 +16,15 @@ There are two ways to use this component. For simple projects or just to get sta
 
 ### Script tag
 
-- Put this script tag in the head of your index.html:
+- Put this bit of code in your index.html
 
 ```html
 <script
   type="module"
   src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"
 ></script>
+
+<pwa-upadte></pwa-update>
 ```
 
 ### NPM
