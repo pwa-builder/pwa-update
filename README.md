@@ -40,7 +40,7 @@ Then you can use the element `<pwa-update></pwa-update>` anywhere in your templa
 | -------------------- | -------------------- | ------------------------------------------------------------------------------- | --------- | --------------------------------------------------- |
 | `updateMessage`           | `updateMessage`       | Will always show the install button                                       | `string` | `An update for this app is available`                                             |
 | `updateevent`          | `updateevent`          | name of event sent to service worker to start udpate                        | `string` | `false`                                             |
-| `manifestpath`       | `manifestpath`       | path to your web manifest                                                       | `string`  | `forceUpdate`                                     |
+ `string`  | `forceUpdate`                                     |
 | `swpath`          | `swpath`          | The path to the service worker to be registered | `string`  | `service-worker.js`                      |
 
 ### Methods
