@@ -7,7 +7,7 @@ export class pwaupdate extends LitElement {
 
   @property({ type: String }) swpath: string = "service-worker.js";
   @property({ type: String }) updateevent: string = 'forceUpdate';
-  @property({ type: String }) updateMessage = "An update for this app is available";
+  @property({ type: String }) updatemessage = "An update for this app is available";
 
   @property({ type: Boolean }) readyToAsk: boolean = false;
 
@@ -104,7 +104,7 @@ export class pwaupdate extends LitElement {
        ${
       this.readyToAsk ? html`
            <div id="updateToast">
-             <span>${this.updateMessage}</span>
+             <span>${this.updatemessage}</span>
 
              <button @click="${() => this.doUpdate()}">Update</button>
            </div>
