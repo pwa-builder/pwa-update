@@ -10,6 +10,8 @@ export class pwaupdate extends LitElement {
   @property({ type: String }) updatemessage = "An update for this app is available";
 
   @property({ type: Boolean }) readyToAsk: boolean = false;
+  @property({ type: Boolean }) showStorageEstimate: boolean = false;
+  @property({ type: String }) storageUsed: string = null;
 
   swreg: ServiceWorkerRegistration;
 
@@ -31,6 +33,23 @@ export class pwaupdate extends LitElement {
         align-items: center;
         justify-content: space-between;
         min-width: 22em;
+        font-weight: 600;
+
+        animation-name: fadein;
+        animation-duration: 300ms;
+      }
+
+      #storageToast {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        background: #3c3c3c;
+        color: white;
+        padding: 1em;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-weight: 600;
 
         animation-name: fadein;
@@ -66,6 +85,24 @@ export class pwaupdate extends LitElement {
       if ('serviceWorker' in navigator) {
         const reg = await navigator.serviceWorker.register(this.swpath);
 
+        let worker = reg.active || reg.installing;
+
+        if (worker && worker.state === "activated" || worker && worker.state === "installing") {
+          if (navigator.storage) {
+            const storageData = await navigator.storage.estimate();
+
+            if (storageData) {
+              this.storageUsed = this.formatBytes(storageData.usage);
+
+              this.showStorageEstimate = true;
+
+              setTimeout(() => {
+                this.showStorageEstimate = false;
+              }, 1300);
+            }
+          }
+        }
+
         reg.onupdatefound = () => {
           let newWorker = reg.installing;
 
@@ -95,7 +132,20 @@ export class pwaupdate extends LitElement {
 
   doUpdate() {
     this.swreg.waiting.postMessage({ type: this.updateevent });
+
     window.location.reload();
+  }
+
+  formatBytes(bytes, decimals = 2): string {
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
   render() {
@@ -109,6 +159,14 @@ export class pwaupdate extends LitElement {
              <button @click="${() => this.doUpdate()}">Update</button>
            </div>
          ` : null
+      }
+
+      ${
+      this.showStorageEstimate ? html`
+          <div id="storageToast">
+            Ready to use Offline: Cached ${this.storageUsed}
+          </div>
+        ` : null
       }
       </div>
     `
