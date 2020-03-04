@@ -6,7 +6,7 @@ import {
 export class pwaupdate extends LitElement {
 
   @property({ type: String }) swpath: string = "service-worker.js";
-  @property({ type: String }) updateevent: string = 'forceUpdate';
+  @property({ type: String }) updateevent: string = "SKIP_WAITING";
   @property({ type: String }) updatemessage = "An update for this app is available";
 
   @property({ type: Boolean }) readyToAsk: boolean = false;
@@ -94,7 +94,7 @@ export class pwaupdate extends LitElement {
   }
 
   doUpdate() {
-    this.swreg.waiting.postMessage(this.updateevent);
+    this.swreg.waiting.postMessage({ type: this.updateevent });
     window.location.reload();
   }
 
