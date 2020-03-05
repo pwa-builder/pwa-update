@@ -11,7 +11,9 @@ export class pwaupdate extends LitElement {
 
   @property({ type: Boolean }) readyToAsk: boolean = false;
   @property({ type: Boolean }) showStorageEstimate: boolean = false;
-  @property({ type: String }) storageUsed: string = null;
+  @property({ type: Boolean }) showOfflineToast: boolean = false;
+
+  @property({ type: String }) storageUsed: string | null = null;
 
   swreg: ServiceWorkerRegistration;
 
@@ -85,25 +87,25 @@ export class pwaupdate extends LitElement {
       if ('serviceWorker' in navigator) {
         const reg = await navigator.serviceWorker.register(this.swpath);
 
-        let worker = reg.active || reg.installing;
+        let worker = reg.installing;
 
-        if (worker && worker.state === "activated" || worker && worker.state === "installing") {
+        if (worker) {
           if (navigator.storage) {
             const storageData = await navigator.storage.estimate();
 
             if (storageData) {
               this.storageUsed = this.formatBytes(storageData.usage);
 
-              this.showStorageEstimate = true;
+              this.showOfflineToast = true;
 
               setTimeout(() => {
-                this.showStorageEstimate = false;
+                this.showOfflineToast = false;
               }, 1300);
             }
           }
         }
 
-        reg.onupdatefound = () => {
+        reg.onupdatefound = async () => {
           let newWorker = reg.installing;
 
           newWorker.onstatechange = () => {
@@ -162,9 +164,11 @@ export class pwaupdate extends LitElement {
       }
 
       ${
-      this.showStorageEstimate ? html`
+      this.showOfflineToast ? html`
           <div id="storageToast">
-            Ready to use Offline: Cached ${this.storageUsed}
+            Ready to use Offline
+
+            ${this.showStorageEstimate ? html`<span id="storageEstimate">${this.storageUsed}</span>` : null}
           </div>
         ` : null
       }
