@@ -50,12 +50,18 @@ export class pwaupdate extends LitElement {
         padding: 1em;
         border-radius: 4px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-end;
+
         font-weight: 600;
 
         animation-name: fadein;
         animation-duration: 300ms;
+      }
+
+      #storageEstimate {
+        font-size: 10px;
+        margin-top: 8px;
       }
 
       #updateToast button {
@@ -168,7 +174,7 @@ export class pwaupdate extends LitElement {
           <div id="storageToast">
             Ready to use Offline
 
-            ${this.showStorageEstimate ? html`<span id="storageEstimate">${this.storageUsed}</span>` : null}
+            ${this.showStorageEstimate ? html`<span id="storageEstimate">Cached ${this.storageUsed}</span>` : null}
           </div>
         ` : null
       }
