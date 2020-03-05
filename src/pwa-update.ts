@@ -21,13 +21,16 @@ export class pwaupdate extends LitElement {
     return css`
       :host {
         font-family: sans-serif;
+
+        --toast-background: #3c3c3c;
+        --button-background: #0b0b0b;
       }
 
       #updateToast {
         position: absolute;
         bottom: 16px;
         right: 16px;
-        background: #3c3c3c;
+        background: var(--toast-background);
         color: white;
         padding: 1em;
         border-radius: 4px;
@@ -45,7 +48,7 @@ export class pwaupdate extends LitElement {
         position: absolute;
         bottom: 16px;
         right: 16px;
-        background: #3c3c3c;
+        background: var(--toast-background);
         color: white;
         padding: 1em;
         border-radius: 4px;
@@ -67,7 +70,7 @@ export class pwaupdate extends LitElement {
       #updateToast button {
         color: white;
         border: none;
-        background: #0b0b0b;
+        background: var(--button-background);
         padding: 8px;
         border-radius: 24px;
         text-transform: lowercase;

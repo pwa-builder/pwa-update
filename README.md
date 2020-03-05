@@ -46,11 +46,13 @@ Then you can use the element `<pwa-update></pwa-update>` anywhere in your templa
 | `swpath`          | `swpath`          | The path to the service worker to be registered | `string`  | `service-worker.js`                      |
 | `showStorageEstimate`          | `showStorageEstimate`          | Show the user how much storage has been used by the PWA | `boolean`  | `false`                      |
 
-### Methods
-
 
 ### CSS Variables
 
-We recommend using our [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to easliy tweak the style of this component to fit your project. Here are our current
+We recommend using our [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to easily tweak the style of this component to fit your project. Here are our current
 supported CSS variables.
 
+| name                       | Description                                           |
+| -------------------------- | ----------------------------------------------------- |
+| `--toast-background`       | `Changes the background color of the toast`           |
+| `--button-background`      | `Changes the background color of the update button`   |
