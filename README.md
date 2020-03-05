@@ -45,6 +45,7 @@ Then you can use the element `<pwa-update></pwa-update>` anywhere in your templa
  `string`  | `forceUpdate`                                     |
 | `swpath`          | `swpath`          | The path to the service worker to be registered | `string`  | `service-worker.js`                      |
 | `showStorageEstimate`          | `showStorageEstimate`          | Show the user how much storage has been used by the PWA | `boolean`  | `false`                      |
+| `offlineToastDuration`          | `offlineToastDuration`          | How long the offline toast is displayed | `number (milliseconds)`  | `1300`                      |
 
 
 ### CSS Variables

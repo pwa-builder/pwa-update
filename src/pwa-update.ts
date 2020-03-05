@@ -12,6 +12,7 @@ export class pwaupdate extends LitElement {
   @property({ type: Boolean }) readyToAsk: boolean = false;
   @property({ type: Boolean }) showStorageEstimate: boolean = false;
   @property({ type: Boolean }) showOfflineToast: boolean = false;
+  @property({ type: Number }) offlineToastDuration: number = 1300;
 
   @property({ type: String }) storageUsed: string | null = null;
 
@@ -109,7 +110,7 @@ export class pwaupdate extends LitElement {
 
               setTimeout(() => {
                 this.showOfflineToast = false;
-              }, 1300);
+              }, this.offlineToastDuration);
             }
           }
         }
