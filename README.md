@@ -24,7 +24,7 @@ There are two ways to use this component. For simple projects or just to get sta
   src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"
 ></script>
 
-<pwa-upadte></pwa-update>
+<pwa-update></pwa-update>
 ```
 
 ### NPM
