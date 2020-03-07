@@ -5,7 +5,7 @@ import {
 @customElement('pwa-update')
 export class pwaupdate extends LitElement {
 
-  @property({ type: String }) swpath: string = "service-worker.js";
+  @property({ type: String }) swpath: string = "pwabuilder-sw.js";
   @property({ type: String }) updateevent: string = "SKIP_WAITING";
   @property({ type: String }) updatemessage = "An update for this app is available";
 

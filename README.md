@@ -43,7 +43,7 @@ Then you can use the element `<pwa-update></pwa-update>` anywhere in your templa
 | `updatemessage`           | `updatemessage`       | Message that will be show to the user when there is an update                                  | `string` | `An update for this app is available`                                             |
 | `updateevent`          | `updateevent`          | name of event sent to service worker to start udpate                        | `string` | `false`                                             |
  `string`  | `forceUpdate`                                     |
-| `swpath`          | `swpath`          | The path to the service worker to be registered | `string`  | `service-worker.js`                      |
+| `swpath`          | `swpath`          | The path to the service worker to be registered | `string`  | `pwabuilder-sw.js`                      |
 | `showStorageEstimate`          | `showStorageEstimate`          | Show the user how much storage has been used by the PWA | `boolean`  | `false`                      |
 | `offlineToastDuration`          | `offlineToastDuration`          | How long the offline toast is displayed | `number (milliseconds)`  | `1300`                      |
 
