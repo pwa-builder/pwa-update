@@ -12,7 +12,7 @@ export class pwaupdate extends LitElement {
   @property({ type: Boolean }) readyToAsk: boolean = false;
   @property({ type: Boolean }) showStorageEstimate: boolean = false;
   @property({ type: Boolean }) showOfflineToast: boolean = false;
-  @property({ type: Number }) offlineToastDuration: number = 1300;
+  @property({ type: Number }) offlineToastDuration: number = 2400;
 
   @property({ type: String }) storageUsed: string | null = null;
 
@@ -58,9 +58,6 @@ export class pwaupdate extends LitElement {
         align-items: flex-end;
 
         font-weight: 600;
-
-        animation-name: fadein;
-        animation-duration: 300ms;
       }
 
       #storageEstimate {
@@ -108,8 +105,31 @@ export class pwaupdate extends LitElement {
 
               this.showOfflineToast = true;
 
-              setTimeout(() => {
-                this.showOfflineToast = false;
+              await this.updateComplete;
+
+              const ani = this.shadowRoot.querySelector('#storageToast').animate(
+                [
+                  {
+                    opacity: 0
+                  },
+                  {
+                    opacity: 1
+                  }
+                ],
+                {
+                  fill: 'forwards',
+                  duration: 280
+                }
+              );
+
+              setTimeout(async () => {
+                
+                ani.onfinish = () => {
+                  this.showOfflineToast = false;
+                }
+
+                await ani.reverse();
+
               }, this.offlineToastDuration);
             }
           }
