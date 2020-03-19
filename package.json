@@ -1,6 +1,6 @@
 {
   "name": "@pwabuilder/pwaupdate",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/pwa-update.js",
   "module": "dist/pwa-update.js",
