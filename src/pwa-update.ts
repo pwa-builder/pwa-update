@@ -185,7 +185,7 @@ export class pwaupdate extends LitElement {
       <div>
        ${
       this.readyToAsk ? html`
-           <div id="updateToast">
+           <div id="updateToast" part="updateToast">
              <span>${this.updatemessage}</span>
 
              <button @click="${() => this.doUpdate()}">Update</button>
@@ -195,7 +195,7 @@ export class pwaupdate extends LitElement {
 
       ${
       this.showOfflineToast ? html`
-          <div id="storageToast">
+          <div id="storageToast" part="offlineToast">
             Ready to use Offline
 
             ${this.showStorageEstimate ? html`<span id="storageEstimate">Cached ${this.storageUsed}</span>` : null}

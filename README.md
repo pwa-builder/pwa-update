@@ -59,3 +59,13 @@ supported CSS variables.
 | -------------------------- | ----------------------------------------------------- |
 | `--toast-background`       | `Changes the background color of the toast`           |
 | `--button-background`      | `Changes the background color of the update button`   |
+
+### Shadow Parts
+
+If you need to style this component more comprehensively, you can use [Shadow Parts](https://dev.to/webpadawan/css-shadow-parts-are-coming-mi5) to style both the update toast and the "ready to use offline" toast. To target these two elements you can use `pwa-install::part(updateToast)` and `pwa-install::part(offlineToast)` respectively. For example, to make the background of the install button grey, I would need this CSS:
+
+```css
+pwa-install::part(updateToast) {
+  backround: grey;
+}
+```
