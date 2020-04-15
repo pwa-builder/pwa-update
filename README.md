@@ -10,6 +10,12 @@ _Built with [lit-element](https://lit-element.polymer-project.org/)_
 
 ![An image of what the component looks like](assets/update.png?raw=true "pwa-update")
 
+## Supported Browsers
+- Edge
+- Chrome
+- Firefox
+- Safari
+
 ## Using this component
 
 ## Install
