@@ -2,7 +2,7 @@
 
 `pwa-update` is a [web component](https://meowni.ca/posts/web-components-with-otters/) from the [PWABuilder](https://pwabuilder.com) team that brings an awesome "update" experience to your Progressive Web App! It will automatically register your service worker and notify the user of when a new update to your PWA is available. Finally, this component will also let the user of your PWA know when your PWA is ready to be used offline, completing the experience.
 
-Live demo: https://glitch.com/edit/#!/pwa-update
+Live demo: https://pwa-update.glitch.me
 
 _Built with [lit-element](https://lit-element.polymer-project.org/)_
 
@@ -40,7 +40,7 @@ There are two ways to use this component. For simple projects or just to get sta
 - Run `npm install @pwabuilder/pwaupdate`
 - import with `import '@pwabuilder/pwaupdate'`
 
-Then you can use the element `<pwa-update></pwa-update>` anywhere in your template, JSX, html etc. An example of using this component can be found here: https://glitch.com/~pwainstall
+Then you can use the element `<pwa-update></pwa-update>` anywhere in your template, JSX, html etc. An example of using this component can be found here: https://pwa-update.glitch.me
 
 ## API
 
