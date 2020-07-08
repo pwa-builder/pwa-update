@@ -28,7 +28,7 @@ export class pwaupdate extends LitElement {
       }
 
       #updateToast {
-        position: absolute;
+        position: fixed;
         bottom: 16px;
         right: 16px;
         background: var(--toast-background);
@@ -46,7 +46,7 @@ export class pwaupdate extends LitElement {
       }
 
       #storageToast {
-        position: absolute;
+        position: fixed;
         bottom: 16px;
         right: 16px;
         background: var(--toast-background);
