@@ -13,6 +13,7 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): bump acorn from 7.1.0 to 7.3.1 [\#12](https://github.com/pwa-builder/pwa-update/pull/12) ([dependabot[bot]](https://github.com/apps/dependabot))
 - made toast fixed, so it stays in bottom right when you scroll. [\#11](https://github.com/pwa-builder/pwa-update/pull/11) ([Jaylyn-Barbee](https://github.com/Jaylyn-Barbee))
 - feat\(\): improve toast [\#3](https://github.com/pwa-builder/pwa-update/pull/3) ([jgw96](https://github.com/jgw96))
 
