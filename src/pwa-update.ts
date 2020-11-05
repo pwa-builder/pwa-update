@@ -16,7 +16,7 @@ export class pwaupdate extends LitElement {
 
   @property({ type: String }) storageUsed: string | null = null;
 
-  swreg: ServiceWorkerRegistration;
+  swreg: ServiceWorkerRegistration | undefined;
 
   static get styles() {
     return css`
@@ -101,13 +101,13 @@ export class pwaupdate extends LitElement {
             const storageData = await navigator.storage.estimate();
 
             if (storageData) {
-              this.storageUsed = this.formatBytes(storageData.usage);
+              this.storageUsed = this.formatBytes(storageData.usage!);
 
               this.showOfflineToast = true;
 
               await this.updateComplete;
 
-              const ani = this.shadowRoot.querySelector('#storageToast').animate(
+              const ani = this.shadowRoot?.querySelector('#storageToast')?.animate(
                 [
                   {
                     opacity: 0
@@ -122,15 +122,17 @@ export class pwaupdate extends LitElement {
                 }
               );
 
-              setTimeout(async () => {
-                
-                ani.onfinish = () => {
-                  this.showOfflineToast = false;
-                }
 
-                await ani.reverse();
+              if (ani) {
+                setTimeout(async () => {
+                  ani.onfinish = () => {
+                    this.showOfflineToast = false;
+                  };
 
-              }, this.offlineToastDuration);
+                  await ani.reverse();
+                }, this.offlineToastDuration);
+              }
+              
             }
           }
         }
@@ -138,10 +140,12 @@ export class pwaupdate extends LitElement {
         reg.onupdatefound = async () => {
           let newWorker = reg.installing;
 
-          newWorker.onstatechange = () => {
-            if (newWorker.state === 'installed') {
-              this.dispatchEvent(new Event('pwaUpdate'));
-            }
+          if (newWorker) {
+            newWorker.onstatechange = () => {
+              if (newWorker?.state === "installed") {
+                this.dispatchEvent(new Event("pwaUpdate"));
+              }
+            };
           }
         }
       }
@@ -163,12 +167,12 @@ export class pwaupdate extends LitElement {
   }
 
   doUpdate() {
-    this.swreg.waiting.postMessage({ type: this.updateevent });
+    this.swreg?.waiting?.postMessage({ type: this.updateevent });
 
     window.location.reload();
   }
 
-  formatBytes(bytes, decimals = 2): string {
+  formatBytes(bytes: number, decimals = 2): string {
     if (bytes === 0) return '0 Bytes';
 
     const k = 1024;

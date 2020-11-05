@@ -13,6 +13,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "sourceMap": true,
+    "strict": true,
     "rootDir": "src"
   },
 
