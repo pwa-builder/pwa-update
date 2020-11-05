@@ -47,14 +47,14 @@ Then you can use the element `<pwa-update></pwa-update>` anywhere in your templa
 
 ### Properties
 
-| Property               | Attribute              | Description                                                   | Type                    | Default                               |
-| ---------------------- | ---------------------- | ------------------------------------------------------------- | ----------------------- | ------------------------------------- |
-| `updatemessage`        | `updatemessage`        | Message that will be show to the user when there is an update | `string`                | `An update for this app is available` |
-| `updateevent`          | `updateevent`          | name of event sent to service worker to start update          | `string`                | `false`                               |
-| `readyToAsk`           | `readyToAsk`           | Force show the update prompt                                  | `boolean`               | `false`                               |
-| `swpath`               | `swpath`               | The path to the service worker to be registered               | `string`                | `pwabuilder-sw.js`                    |
-| `showStorageEstimate`  | `showStorageEstimate`  | Show the user how much storage has been used by the PWA       | `boolean`               | `false`                               |
-| `offlineToastDuration` | `offlineToastDuration` | How long the offline toast is displayed                       | `number (milliseconds)` | `1300`                                |
+| Property               | Attribute              | Description                                                         | Type                    | Default                               |
+| ---------------------- | ---------------------- | ------------------------------------------------------------------- | ----------------------- | ------------------------------------- |
+| `updatemessage`        | `updatemessage`        | Message that will be show to the user when there is an update       | `string`                | `An update for this app is available` |
+| `updateevent`          | `updateevent`          | name of event sent to service worker to start update                | `string`                | `false`                               |
+| `readyToAsk`           | `readyToAsk`           | Can be used to show the update prompt, alternative to `updateevent` | `boolean`               | `false`                               |
+| `swpath`               | `swpath`               | The path to the service worker to be registered                     | `string`                | `pwabuilder-sw.js`                    |
+| `showStorageEstimate`  | `showStorageEstimate`  | Show the user how much storage has been used by the PWA             | `boolean`               | `false`                               |
+| `offlineToastDuration` | `offlineToastDuration` | How long the offline toast is displayed                             | `number (milliseconds)` | `1300`                                |
 
 ### CSS Variables
 
