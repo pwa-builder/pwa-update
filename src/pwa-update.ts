@@ -131,7 +131,7 @@ export class pwaupdate extends LitElement implements PWAUpdateComponent {
                   await ani.reverse();
                 }, this.offlineToastDuration);
               }
-              
+
             }
           }
         }
@@ -186,18 +186,16 @@ export class pwaupdate extends LitElement implements PWAUpdateComponent {
   render() {
     return html`
       <div>
-       ${
-      this.readyToAsk ? html`
+       ${this.readyToAsk ? html`
            <div id="updateToast" part="updateToast">
-             <span>${this.updatemessage}</span>
+             <span part="updateToastMessage">${this.updatemessage}</span>
 
-             <button @click="${() => this.doUpdate()}">Update</button>
+             <button part="updateToastButton" @click="${() => this.doUpdate()}">Update</button>
            </div>
          ` : null
       }
 
-      ${
-      this.showOfflineToast ? html`
+      ${this.showOfflineToast ? html`
           <div id="storageToast" part="offlineToast">
             Ready to use Offline
 
