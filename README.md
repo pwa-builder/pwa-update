@@ -68,7 +68,9 @@ supported CSS variables.
 
 ### Shadow Parts
 
-If you need to style this component more comprehensively, you can use [Shadow Parts](https://dev.to/webpadawan/css-shadow-parts-are-coming-mi5) to style both the update toast and the "ready to use offline" toast. To target these two elements you can use `pwa-update::part(updateToast)` and `pwa-update::part(offlineToast)` respectively. For example, to make the background of the install button grey, I would need this CSS:
+If you need to style this component more comprehensively, you can use [Shadow Parts](https://dev.to/webpadawan/css-shadow-parts-are-coming-mi5) to style both the update toast and the "ready to use offline" toast. To target these two elements you can use `pwa-update::part(updateToast)` and `pwa-update::part(offlineToast)` respectively.
+For more customizations in toast part, you can also target `pwa-update::part(updateToastMessage)` and `pwa-update::part(updateToastButton)` for message and button elements.
+For example, to make the background of the install button grey, I would need this CSS:
 
 ```css
 pwa-update::part(updateToast) {
