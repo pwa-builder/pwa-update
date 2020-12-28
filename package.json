@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/pwa-update.js",
   "module": "dist/pwa-update.js",
+  "repository": "https://github.com/varora1406/pwa-update",
   "scripts": {
     "test": "./node_modules/.bin/karma start --coverage",
     "test:watch": "karma start --auto-watch=true --single-run=false",
