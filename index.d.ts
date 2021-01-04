@@ -5,14 +5,9 @@ declare global {
     "pwa-update": PWAUpdateComponent;
   }
 
-  interface PWAUpdateComponent extends HTMLElement {
-    swpath: string;
-    updateevent: string;
+  export interface PWAUpdateComponent extends HTMLElement {
     updatemessage: string;
-    readyToAsk: boolean;
-    showStorageEstimate: boolean;
-    offlineToastDuration: number;
   }
 }
 
-export {};
+export { };
