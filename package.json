@@ -1,6 +1,6 @@
 {
   "name": "pwaupdate",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/pwa-update.js",
   "module": "dist/pwa-update.js",
@@ -15,7 +15,7 @@
     "dev": "concurrently \"tsc --watch\" \"npx es-dev-server --node-resolve --open www/\"",
     "build": "tsc && rollup -c"
   },
-  "author": "PWABuilder Team",
+  "author": "Vaibhav Arora",
   "license": "ISC",
   "dependencies": {
     "lit-element": "^2.4.0",
