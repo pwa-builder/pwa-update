@@ -1,9 +1,10 @@
 {
-  "name": "@pwabuilder/pwaupdate",
-  "version": "0.2.1",
+  "name": "pwaupdate",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/pwa-update.js",
   "module": "dist/pwa-update.js",
+  "repository": "https://github.com/varora1406/pwa-update",
   "scripts": {
     "test": "./node_modules/.bin/karma start --coverage",
     "test:watch": "karma start --auto-watch=true --single-run=false",
@@ -14,10 +15,11 @@
     "dev": "concurrently \"tsc --watch\" \"npx es-dev-server --node-resolve --open www/\"",
     "build": "tsc && rollup -c"
   },
-  "author": "PWABuilder Team",
+  "author": "Vaibhav Arora",
   "license": "ISC",
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit-element": "^2.4.0",
+    "pwa-helper-components": "^0.2.10"
   },
   "devDependencies": {
     "@open-wc/karma-esm": "^3.0.4",

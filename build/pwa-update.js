@@ -1,26 +1,24 @@
-import {
-  LitElement, html, customElement, css, property, eventOptions
-} from 'lit-element';
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+import { LitElement, html, customElement, css, property, eventOptions } from 'lit-element';
 import 'pwa-helper-components/pwa-update-available.js';
-
-interface DetailEvent {
-  detail: boolean;
-}
-
-@customElement("pwa-update")
-export class pwaupdate extends LitElement implements PWAUpdateComponent {
-  @property({ type: String }) updatemessage = "An update for this app is available";
-
-  @property({ type: Boolean }) show = false;
-
-  static get properties() {
-    return {
-      show: { type: Boolean, reflect: true }
+let pwaupdate = class pwaupdate extends LitElement {
+    constructor() {
+        super(...arguments);
+        this.updatemessage = "An update for this app is available";
+        this.show = false;
     }
-  }
-
-  static get styles() {
-    return css`
+    static get properties() {
+        return {
+            show: { type: Boolean, reflect: true }
+        };
+    }
+    static get styles() {
+        return css `
       :host {
         font-family: sans-serif;
 
@@ -95,22 +93,33 @@ export class pwaupdate extends LitElement implements PWAUpdateComponent {
 
 
     `;
-  }
-
-  @eventOptions({ passive: true })
-  private _updateShow(event: Event) {
-    const detailEvent = event as unknown as DetailEvent;
-    this.show = detailEvent.detail;
-  }
-
-  render() {
-    return html`
+    }
+    _updateShow(event) {
+        const detailEvent = event;
+        this.show = detailEvent.detail;
+    }
+    render() {
+        return html `
     <div id="updateToast" part="updateToast" show=${this.show}>
       <span part="updateToastMessage">${this.updatemessage}</span>
       <pwa-update-available @pwa-update-available=${this._updateShow}>
         <button part="updateToastButton">Update</button>
       </pwa-update-available>
     </div>
-    `
-  }
-}
+    `;
+    }
+};
+__decorate([
+    property({ type: String })
+], pwaupdate.prototype, "updatemessage", void 0);
+__decorate([
+    property({ type: Boolean })
+], pwaupdate.prototype, "show", void 0);
+__decorate([
+    eventOptions({ passive: true })
+], pwaupdate.prototype, "_updateShow", null);
+pwaupdate = __decorate([
+    customElement("pwa-update")
+], pwaupdate);
+export { pwaupdate };
+//# sourceMappingURL=pwa-update.js.map
