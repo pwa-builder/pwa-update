@@ -38,6 +38,7 @@ export class pwaupdate extends LitElement implements PWAUpdateComponent {
         align-items: center;
         justify-content: space-between;
         min-width: 22em;
+        max-width: calc(100vw - 16px);
         font-weight: 600;
 
         animation-name: fadein;
@@ -53,6 +54,7 @@ export class pwaupdate extends LitElement implements PWAUpdateComponent {
         padding: 1em;
         border-radius: 4px;
         display: flex;
+        max-width: calc(100vw - 16px);
         flex-direction: column;
         align-items: flex-end;
 
