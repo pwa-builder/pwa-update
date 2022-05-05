@@ -5,6 +5,7 @@ import {
 @customElement("pwa-update")
 export class pwaupdate extends LitElement implements PWAUpdateComponent {
   @property({ type: String }) swpath: string = "/pwabuilder-sw.js";
+  @property({type: string}) registrationOptions = "{}";
   @property({ type: String }) updateevent: string = "SKIP_WAITING";
   @property({ type: String }) updatemessage = "An update for this app is available";
 
@@ -93,7 +94,8 @@ export class pwaupdate extends LitElement implements PWAUpdateComponent {
   async firstUpdated() {
     if (this.swpath) {
       if ('serviceWorker' in navigator) {
-        const reg = await navigator.serviceWorker.register(this.swpath);
+        const options = JSON.parse(registrationOptions);
+        const reg = await navigator.serviceWorker.register(this.swpath, options);
 
         let worker = reg.installing;
 
