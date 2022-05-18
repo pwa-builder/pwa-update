@@ -1,3 +1,5 @@
+# The code for this component has moved to the main PWABuilder monorepo and this repository has been archived. Please visit our [monorepo for the latest source](https://github.com/pwa-builder/pwabuilder).
+
 # pwa-update
 
 `pwa-update` is a [web component](https://meowni.ca/posts/web-components-with-otters/) from the [PWABuilder](https://pwabuilder.com) team that brings an awesome "update" experience to your Progressive Web App! It will automatically register your service worker and notify the user of when a new update to your PWA is available. Finally, this component will also let the user of your PWA know when your PWA is ready to be used offline, completing the experience.
